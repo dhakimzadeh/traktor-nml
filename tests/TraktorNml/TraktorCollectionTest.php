@@ -8,31 +8,9 @@ use \TraktorNml\TraktorCollection;
  */
 class TraktorCollectionTest extends PHPUnit_Framework_TestCase
 {
-	/**
-	 * @var vfsStreamDirectory
-	 */
-	private $vfs;
-
-	public function setUp() 
+	public function testTodo() 
 	{
-		$this->vfs = vfsStream::setup('root');
-		vfsStream::copyFromFileSystem(__DIR__ . '/../../fixtures/');
+		$this->assertTrue(true);
 	}
 
-	public function testLoadExampleNMLFilesFromVfs() 
-	{	
-		$this->assertCount(2, $this->vfs->getChildren()); // should be two files
-		$this->assertEquals('test1.nml',$this->vfs->getChild('test1.nml')->getName());
-	}
-
-	public function testLoadNml() 
-	{
-		$content = $this->vfs->getChild('test1.nml')->getContent();
-
-		$collection = new TraktorCollection();
-		$collection->load($content);
-
-		$this->assertEquals($collection->version(), 15);
-		$this->assertEquals($collection->numEntries(), 3);
-	}
 }
