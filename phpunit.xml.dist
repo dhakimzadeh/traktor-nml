@@ -1,0 +1,13 @@
+<phpunit colors="true"
+		 bootstrap="tests/bootstrap.php"
+		 convertErrorsToExceptions="true"
+       convertNoticesToExceptions="true"
+       convertWarningsToExceptions="true"
+       processIsolation="false"
+       stopOnFailure="false"
+       syntaxCheck="false"
+       >
+	<testsuite name="TraktorNML Tests">
+		<directory>tests/TraktorNML</directory>
+	</testsuite>
+</phpunit>
