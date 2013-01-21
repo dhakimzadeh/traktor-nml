@@ -7,7 +7,7 @@
        stopOnFailure="false"
        syntaxCheck="false"
        >
-	<testsuite name="TraktorNML Tests">
-		<directory>tests/TraktorNML</directory>
+	<testsuite name="TraktorNml Tests">
+		<directory>tests/TraktorNml</directory>
 	</testsuite>
 </phpunit>

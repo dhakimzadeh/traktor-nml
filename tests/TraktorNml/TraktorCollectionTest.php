@@ -1,12 +1,12 @@
 <?php
 
 use org\bovigo\vfs\vfsStream;
-use \TraktorNML\TraktorNML;
+use \TraktorNml\TraktorCollection;
 
 /**
- * TraktorNMLTest
+ * TraktorCollectionTest
  */
-class TraktorNMLTest extends PHPUnit_Framework_TestCase
+class TraktorCollectionTest extends PHPUnit_Framework_TestCase
 {
 	/**
 	 * @var vfsStreamDirectory
@@ -26,15 +26,15 @@ class TraktorNMLTest extends PHPUnit_Framework_TestCase
 	}
 
 
-	public function testLoadNML_Header() 
+	public function testLoadNml_Header() 
 	{
 		$content = $this->vfs->getChild('test1.nml')->getContent();
 
-		$traktorNML = new TraktorNML();
+		$traktorNML = new TraktorCollection();
 		$traktorNML->load($content);
 
 		$this->assertEquals($traktorNML->version(), 15);
-		$this->assertEquals($traktorNML->getNumCollectionEntries(), 3);
+		$this->assertEquals($traktorNML->numCollectionEntries(), 3);
 	}
 	
 

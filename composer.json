@@ -1,6 +1,6 @@
 {
 	"autoload": {
-		"psr-0": {"TraktorNML" : "src/"}
+		"psr-0": {"TraktorNml" : "src/"}
 	},
 	"require": {
 		"mikey179/vfsStream": "dev-master",
