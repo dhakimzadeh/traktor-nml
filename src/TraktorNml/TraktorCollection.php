@@ -25,36 +25,46 @@ class TraktorCollection
 		$this->collectionEntries = array();
 	}
 
-
-	private function loadCollections($xml)
-	{
-		foreach ($xml->COLLECTION->ENTRY as $item)
-		{
-			$entry = new TraktorNmlCollectionEntry();
-			$entry->load($item);
-			$this->entries[] = $entry;
-		}
-		
-	}
-	
-
-	public function load($content)
+	/**
+	 * Passed in raw xml string
+	 * 
+	 * @param  [type] $xmlString [description]
+	 * @return [type]            [description]
+	 */
+	public function load($xmlString)
 	{	
 		$this->initValues();
 
 		try {
-			$xml = simplexml_load_string($content);
+			$xml = simplexml_load_string($xmlString);
 
-			// Global Info
-			$this->version = $this->xml_string_attribute($xml,'VERSION');
-
-
+			$this->loadGlobalInfo($xml);
 			$this->loadCollections($xml->COLLECTION);
 
-			//echo print_r($this,true);
 		} catch (Exception $e) {
 			print_r($e);
 		}
+	}
+
+	/**
+	 * Passed in as $root->COLLECTION
+	 * 
+	 * @param  [type] $xml [description]
+	 * @return [type]      [description]
+	 */
+	private function loadCollections($xml)
+	{
+		foreach ($xml->ENTRY as $item)
+		{
+			$entry = new TraktorCollectionEntry();
+			$entry->load($item);
+			$this->entries[] = $entry;
+		}	
+	}
+
+	private function loadGlobalInfo($xml)
+	{
+		$this->version = $this->xml_string_attribute($xml,'VERSION');
 	}
 
 	private function xml_string_attribute($object, $attribute)

@@ -25,17 +25,14 @@ class TraktorCollectionTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals('test1.nml',$this->vfs->getChild('test1.nml')->getName());
 	}
 
-
-	public function testLoadNml_Header() 
+	public function testLoadNml() 
 	{
 		$content = $this->vfs->getChild('test1.nml')->getContent();
 
-		$traktorNML = new TraktorCollection();
-		$traktorNML->load($content);
+		$collection = new TraktorCollection();
+		$collection->load($content);
 
-		$this->assertEquals($traktorNML->version(), 15);
-		$this->assertEquals($traktorNML->numCollectionEntries(), 3);
+		$this->assertEquals($collection->version(), 15);
+		$this->assertEquals($collection->numEntries(), 3);
 	}
-	
-
 }
