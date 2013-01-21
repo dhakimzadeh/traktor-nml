@@ -33,10 +33,7 @@ class TraktorCollectionBuilderTest extends PHPUnit_Framework_TestCase
 		$builder = new TraktorCollectionBuilder();
 		$collection = $builder->buildFromXML($content);
 
-		// $collection = new TraktorCollection();
-		// $collection->load($content);
-
-		$this->assertEquals($collection->version(), 15);
+		$this->assertEquals($collection->getVersion(), 15);
 		$this->assertEquals($collection->numEntries(), 3);
 	}
 }
