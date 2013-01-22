@@ -30,7 +30,6 @@ class TraktorNmlParser15 implements TraktorNmlParserInterface
 		foreach ($xml->ENTRY as $item)
 		{
 			$entry = new TraktorCollectionEntry();
-			//$entry->load($item);
 			$this->collection->addEntry($entry);
 		}	
 	}
