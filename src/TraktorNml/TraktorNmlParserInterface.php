@@ -9,5 +9,7 @@ interface TraktorNmlParserInterface
 
 	function loadGlobalValues($xml);
 
-	function loadCollections($xml);
+	function loadCollections($collectionXml);
+
+	function loadCollectionEntry($entryXml, TraktorCollectionEntry $entry);
 }

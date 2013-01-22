@@ -25,13 +25,19 @@ class TraktorNmlParser15 implements TraktorNmlParserInterface
 		$this->collection->setVersion($this->xml_string_attribute($xml,'VERSION'));
 	}
 
-	public function loadCollections($xml)
+	public function loadCollections($collectionXml)
 	{
-		foreach ($xml->ENTRY as $item)
+		foreach ($collectionXml->ENTRY as $entryXml)
 		{
 			$entry = new TraktorCollectionEntry();
+			$entry = $this->loadCollectionEntry($entryXml,$entry);
 			$this->collection->addEntry($entry);
 		}	
+	}
+
+	public function loadCollectionEntry($entryxml, TraktorCollectionEntry $entry)
+	{
+		
 	}
 
 	private function xml_string_attribute($object, $attribute)
